@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Search | Explore Recipes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .main-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 2vw;
+        }
+
+        #logo {
+            font-weight: 600;
+    font-family: cursive;
+            color: #e04e1a;
+            text-decoration: none;
+            font-size: 2rem;
+            margin-top: 0vh;
+            margin-left: 2vw;
+            margin-right: 4vw;
+            transition: all 0.3s ease-in-out;
+        }
+        #logo:hover{
+            text-shadow: 0px 0px 4px #fc9671;
+                }
+        #profile{
+            width: 3vw;
+            height: auto;
+            margin-left: 2vw;
+            cursor: pointer;
+        }
+
+        .nav-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 9vh;
+        }
+
+        .search-bar {
+            width: 40vw;
+            height: 6.2vh;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #FF6347;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .search-bar:focus {
+            border-color: #e04e1a;
+            box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
+        }
+
+        .nav_item {
+            text-decoration: none;
+            text-align: center;
+            padding: 1.5vh 2vw;
+            margin-left: 1vw;
+            background-color: #FF6347;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1vw;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .nav_item:hover {
+            background-color: #e04e1a;
+        }
+
+       
+
+        .food-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+    padding: 2rem;
+        }
+
+        .food-item {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            width: 300px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 26vh;
+            object-fit: cover;
+        }
+
+        .food-item h3 {
+            font-size: 1rem;
+            color: #FF6347;
+            margin: 2vh 0 1vw;
+            
+        }
+
+        .food-item p {
+            font-size: 12px;
+            color: #666;
+            padding: 0 1vh 3vw;
+            height: 150px;
+            overflow-y: scroll;
+
+        }
+.food-item p::-webkit-scrollbar{
+    display: none;
+}
+        .food-item:hover {
+            transform: translateY(-19px);
+        }
+        #cross{
+            color: #fafafa;
+            font-size: 1rem;
+            padding: 5px;
+            background-color: #333;
+            border-radius: 50%;
+        }
+        /* @media (max-width:627px) {
+            .food-item{
+                max-width: 100%;
+            }
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+
+        <section class="nav-section">
+            <a href="" id="logo">Recipy</a>
+            <input type="text" class="search-bar" placeholder="Search recipes, ingredients, or cuisines..."  id="search-input" onkeyup="searchengin()">
+            <button class="search-btn nav_item" >Search</button>
+            <a href="" id="login" class="nav_item">Log in</a>
+            <a href="" id="signup" class="nav_item">Sign up</a>
+            <img src="img/profile-.png" alt="" id="profile">
+        </section>
+        <!-- <div id="part"></div> -->
+        <main>
+            <section class="food-gallery">
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1453499717/photo/chicken-biryani-or-biriyani-served-in-plate-isolated-on-table-top-view-indian-spicy-food.jpg?b=1&s=612x612&w=0&k=20&c=rvr5qrocvnNclthEzdf9J9ddFp7YWS_vmmzye5J8irk="
+                    alt="Salad Bowl">
+                <h3 class="recipe_name">chiken biriyani</h3>
+                <p>A healthy and refreshing choice for your lunch.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Pasta Dish">
+                <h3 class="recipe_name">italian pasta</h3>
+                <p>A classic Italian dish with rich flavors and textures.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://images.pexels.com/photos/793785/pexels-photo-793785.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="Avocado Toast">
+                <h3 class="recipe_name">avocado toast</h3>
+                <p>Perfect for a light and delicious breakfast.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://c8.alamy.com/comp/F5WB3N/traditional-japanese-food-sushi-and-sushi-rolls-F5WB3N.jpg"
+                    alt="Sushi Rolls">
+                <h3>sushi rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1442417585/photo/person-getting-a-piece-of-cheesy-pepperoni-pizza.jpg?s=612x612&w=0&k=20&c=k60TjxKIOIxJpd4F4yLMVjsniB4W1BpEV4Mi_nb4uJU="
+                    alt="Salad Bowl">
+                <h3>pizza</h3>
+                <p>A healthy and refreshing choice for your lunch.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/517503047/photo/fried-rice-cake.jpg?s=1024x1024&w=is&k=20&c=U9Sd3zvWL_npCyHhIvZ4dObL-M2qiQC20an9FeyURS4="
+                    alt="Pasta Dish">
+                <h3 class="recipe_name">Korea fried rice cake</h3>
+                <p>A classic Italian dish with rich flavors and textures.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/519995985/photo/french-coq-au-vin-chicken.jpg?s=1024x1024&w=is&k=20&c=tXab9WIZweKZrvowgNBj7kQhnnti5gFpYpHXGMJEjO0="
+                    alt="Avocado Toast">
+                <h3>French cuisine</h3>
+                <p>Perfect for a light and delicious breakfast.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1174614327/photo/corn-tikki-or-pakora-pakoda.jpg?s=612x612&w=0&k=20&c=QkcQRXmj-eN055A0-rKm7g5pXfD1y94P9-wTy_rpwcw="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Crispy Corn Tikki</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://thumbs.dreamstime.com/b/fresh-salad-bowl-generative-ai-dark-background-271649652.jpg"
+                    alt="Salad Bowl">
+                <h3>fresh Salad Bowl</h3>
+                <p>A healthy and refreshing choice for your lunch.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1370520449/photo/slice-of-chocolate-cake-with-glaze.jpg?s=612x612&w=0&k=20&c=KK-h7w4l0FNA0YMWvkr1X8UrAAB77z0f5tTByBYgReM="
+                    alt="Pasta Dish">
+                <h3 class="recipe_name">chocolate cake</h3>
+                <p>A classic Italian dish with rich flavors and textures.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1133151212/photo/japanese-dumplings-gyoza-with-pork-meat-and-vegetables.jpg?s=612x612&w=0&k=20&c=vC6GTUDGK6dD5_QHvY1V7fVUdPx-z4TG73DUACR_L5s="
+                    alt="Avocado Toast">
+                <h3>chicken momo</h3>
+                <p>Perfect for a light and delicious breakfast.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/501266025/photo/seekh-kabab-5.jpg?s=612x612&w=0&k=20&c=D6JXEtB4OLF9A91nAfDYLlh507LlbmP_M9PZBoJqD9Q="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">chicken kabab</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1188150002/photo/fried-rice-with-vegetables-asian-food.jpg?s=612x612&w=0&k=20&c=zF_B5MJRMTuOrc6SMN19_EJcOp2Ur8BvlVsYmC5sQtQ="
+                    alt="Salad Bowl">
+                <h3 class="recipe_name">fried rice</h3>
+                <p>A healthy and refreshing choice for your lunch.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1254375047/photo/omelette-egg-served-on-a-plate.jpg?s=612x612&w=0&k=20&c=Vp1icllGgTHTWxWnvU1dFBNGQN0rFaa7ukDoc4I5oDM="
+                    alt="Pasta Dish">
+                <h3 class="recipe_name">omlet</h3>
+                <p>A classic Italian dish with rich flavors and textures.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/840599504/photo/spring-rolls.jpg?s=612x612&w=0&k=20&c=wByMigy56ioHSR7QzXFNNAbgiso8xlAqPfAD35A6YGA="
+                    alt="Avocado Toast">
+                <h3 class="recipe_name">spring roll </h3>
+                <p>Perfect for a light and delicious breakfast.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <div class="food-item">
+
+            
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <div class="food-item">
+                <img src="https://media.istockphoto.com/id/1454591507/photo/appetizer-of-wrapped-smoked-salmon-fillet-cream-cheese-and-herbs-in-a-flat-bread-close-up-on.jpg?s=612x612&w=0&k=20&c=p4ss85AMXmFHeI7uuG9Xqqv059cM6pun5SQVxyCsJ8I="
+                    alt="Sushi Rolls">
+                <h3 class="recipe_name">Sushi Rolls</h3>
+                <p>Fresh sushi rolls made with love and precision.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, ratione? Ipsam atque quia nemo velit sapiente dicta deleniti ipsum magnam, vel hic, omnis ea aliquam provident repellendus quos inventore debitis?
+                    Blanditiis quos consequuntur nostrum, facilis ullam similique! Officiis eius provident suscipit sapiente ratione? Quo, doloremque soluta commodi tenetur accusamus vero, harum nobis rerum odit doloribus maxime vel. Assumenda, hic eaque!
+                    Nulla vitae ipsam, voluptate reiciendis aperiam cum modi? Delectus quis fuga mollitia eius fugit consequuntur optio molestias provident ex ad corrupti vero nostrum facilis, iure omnis aliquam sunt doloremque cumque.
+                    Officia praesentium libero dolor fugiat rerum expedita non eos sit deleniti consectetur incidunt assumenda porro, nostrum illum quam sed necessitatibus animi. Dolor voluptate eligendi dolore quod repellendus voluptas, officia beatae.
+                    
+                </p>
+            </div>
+
+            <i class="fa-solid fa-xmark" id="cross" style="display: none;"></i>
+            </section>
+        </main>
+    </div>
+   
+</body>
+<script>
+  let images=document.querySelectorAll('img')
+  let food_item=document.querySelectorAll('.food-item')
+  let reset=document.querySelector('#cross')
+  let food_gallery=document.querySelector('.food-gallery')
+
+  let search_btn=document.querySelector('.search-btn')
+  
+  food_item.forEach((elm,idx)=>{
+elm.addEventListener("click",(e)=>{
+    food_gallery.style.position='relative'
+for(let i=0;i<=food_item.length-1;i++){
+    food_item[i].style.display='none'
+}
+elm.style.display='block'
+elm.style.width=50+'%'
+reset.style.display='block'
+reset.style.position='absolute'
+reset.style.top=0+'%'
+reset.style.left=50+'%'
+
+})
+
+  })  
+  reset.addEventListener('click',(e)=>{
+    for(let i=0;i<=food_item.length-1;i++){
+    food_item[i].style.display='block'
+    food_item[i].style.width=300+'px'
+}
+reset.style.display='none'
+  })
+
+  
+const searchengin=()=>{
+    const search_box=document.getElementById('search-input').value.toUpperCase();
+    //const store=document.querySelector('.food-gallery')
+    const recipe=document.querySelectorAll('.food-item')
+    const recipe_name=document.getElementsByTagName('h3')
+     
+    for(let i=0;i<recipe_name.length;i++){
+        let match=recipe[i].getElementsByTagName('h3')[0];
+        console.log(match)
+        if(match){
+           let text_value=match.textContent||match.innerhtml;
+           console.log(text_value.toUpperCase())
+           console.log(search_box)
+           if(text_value.toUpperCase().indexOf(search_box)>-1){
+recipe[i].style.display=''
+           }
+           else{
+            recipe[i].style.display='none' 
+           }
+        }
+    }
+
+
+
+}
+
+</script>
+</html>
